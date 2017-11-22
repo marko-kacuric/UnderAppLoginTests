@@ -17,8 +17,10 @@ namespace UnderAppLoginTests
             Browser.WaitForElement("/html/body/under-agent/under-login/div/under-modal-dialog[1]/div/div/div/div");
             string alertTitle = "Please enter valid email";
             Browser.WaitForElement("/html/body/under-agent/under-login/div/under-modal-dialog[1]/div/div/div/div/div[2]");
-            IWebElement alert = Browser.Driver.FindElement(By.XPath("/html/body/under-agent/under-login/div/under-modal-dialog[1]/div/div/div/div/div[2]/div"));
-            Assert.IsTrue(alert.Text.Contains(alertTitle));
+            string alertMsg = Browser.Driver.FindElement(By.XPath("/html/body/under-agent/under-login/div/under-modal-dialog[1]/div/div/div/div/div[2]")).Text;
+            string issueMessage = "@---------------------@Wrong error message is presented!@Expected result: " + alertTitle + "@Actual result: " + alertMsg + "@---------------------";
+            issueMessage = issueMessage.Replace("@", "\n");
+            Assert.AreEqual(alertTitle, alertMsg, issueMessage);
         }
     }
 }

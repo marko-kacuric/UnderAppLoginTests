@@ -12,14 +12,17 @@ namespace UnderAppLoginTests
         [TestMethod]
         public void _3_02_UnexistingEmail()
         {
+
             Pages.Login.GoTo();
             Pages.Login.LogIn("testEmail@test.com", "Test1234!");
 
             Thread.Sleep(350);
-            Browser.WaitForElement("/html/body/under-agent/under-login/div/under-modal-dialog[3]/div/div/div/div");
+            Browser.WaitForElement("/html/body/under-agent/under-login/div/under-modal-dialog[3]/div/div/div/div/div[2]/div");
             string alertTitle = "Wrong email or password is sent.";
             string alertMsg = Browser.Driver.FindElement(By.XPath("/html/body/under-agent/under-login/div/under-modal-dialog[3]/div/div/div/div/div[2]/div")).Text;
-            Assert.AreEqual(alertTitle, alertMsg, "Wrong error message is presented.");
+            string issueMessage = "@---------------------@Wrong error message is presented!@Expected result: " + alertTitle + "@Actual result: " + alertMsg + "@---------------------";
+            issueMessage = issueMessage.Replace("@", "\n");
+            Assert.AreEqual(alertTitle, alertMsg, issueMessage);
         }
     }
 }

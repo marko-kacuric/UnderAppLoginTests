@@ -19,7 +19,9 @@ namespace UnderAppLoginTests
             Browser.WaitForElement("/html/body/under-agent/under-login/div/under-modal-dialog[2]/div/div/div/div");
             string alertTitlePassword = "Please enter valid password.";
             string alertMsgPassword = Browser.Driver.FindElement(By.XPath("/html/body/under-agent/under-login/div/under-modal-dialog[2]/div/div/div/div/div[2]/div")).Text;
-            Assert.AreEqual(alertTitlePassword, alertMsgPassword, "Wrong error message is presented.");
+            string issueMessage = "@---------------------@Wrong error message is presented!@Expected result: " + alertTitlePassword + "@Actual result: " + alertMsgPassword + "@---------------------";
+            issueMessage = issueMessage.Replace("@", "\n");
+            Assert.AreEqual(alertTitlePassword, alertMsgPassword, issueMessage);
         }
 
         [TestMethod]
@@ -32,7 +34,9 @@ namespace UnderAppLoginTests
             Browser.WaitForElement("/html/body/under-agent/under-login/div/under-modal-dialog[2]/div/div/div/div");
             string alertTitlePassword = "Please enter valid password.";
             string alertMsgPassword = Browser.Driver.FindElement(By.XPath("/html/body/under-agent/under-login/div/under-modal-dialog[2]/div/div/div/div/div[2]/div")).Text;
-            Assert.AreEqual(alertTitlePassword, alertMsgPassword, "Wrong error message is presented.");
+            string issueMessage = "@---------------------@Wrong error message is presented!@Expected result: " + alertTitlePassword + "@Actual result: " + alertMsgPassword + "@---------------------";
+            issueMessage = issueMessage.Replace("@", "\n");
+            Assert.AreEqual(alertTitlePassword, alertMsgPassword, issueMessage);
         }
 
         [TestMethod]
@@ -46,7 +50,9 @@ namespace UnderAppLoginTests
             string alertTitlePassword = "Wrong email or password is sent.";
             Thread.Sleep(300);
             string alertMsgPassword = Browser.Driver.FindElement(By.CssSelector(".under-login > under-modal-dialog:nth-child(8) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)")).Text;
-            Assert.AreEqual(alertTitlePassword, alertMsgPassword, "Wrong error message is presented.");
+            string issueMessage = "@---------------------@Wrong error message is presented!@Expected result: " + alertTitlePassword + "@Actual result: " + alertMsgPassword + "@---------------------";
+            issueMessage = issueMessage.Replace("@", "\n");
+            Assert.AreEqual(alertTitlePassword, alertMsgPassword, issueMessage);
         }
 
 

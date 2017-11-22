@@ -10,10 +10,14 @@ namespace UnderAppLoginTests
         [TestMethod]
         public void _3_01_ValidatePageContent()
         {
+            
             Pages.Login.GoTo();
             string header = "Taxi agent login";
             string pageHeader = Browser.Driver.FindElement(By.XPath("/html/body/under-agent/under-login/div/div[2]/div/div[2]/div[1]")).Text;
-            Assert.AreEqual(header, pageHeader, "Redirected to wrong page, something went wrong!");
+            string issueMessage = "@---------------------@Content of the initial agent login page should be visible, user was taken to the wrong page!@---------------------";
+            issueMessage = issueMessage.Replace("@", "\n");
+            Assert.AreEqual(header, pageHeader, issueMessage);
+            
         }
     }
 }
